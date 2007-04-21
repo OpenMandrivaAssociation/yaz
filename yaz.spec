@@ -3,14 +3,14 @@
 
 Summary:	Z39.50 protocol support library
 Name:		yaz
-Version:	2.1.48
+Version:	2.1.54
 Release:	%mkrel 1
 License:	BSD-like
 Group:		System/Libraries
 URL:		http://www.indexdata.dk/yaz/
 Source0:	http://ftp.indexdata.dk/pub/yaz/%{name}-%{version}.tar.bz2
-Patch0:		%{name}-2.1.46-config.patch
-Patch1:		yaz-shared_pcap_libs.diff
+Patch0:		%{name}-2.1.54-config.patch
+Patch1:		%{name}-2.1.54-shared_pcap_libs.patch
 BuildRequires:	autoconf2.5
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	docbook-style-dsssl
@@ -138,6 +138,7 @@ perl -pi -e "s|^yaz_echo_source=.*|yaz_echo_source=yes|g" %{buildroot}%{_bindir}
 %{_libdir}/*.so
 %{_libdir}/*.a
 %{_libdir}/*.la
+%{_libdir}/pkgconfig/*.pc
 %{_datadir}/aclocal/yaz.m4
 %{_datadir}/yaz/z39.50
 %{_datadir}/yaz/ill
