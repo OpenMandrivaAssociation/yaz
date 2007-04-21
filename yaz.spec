@@ -4,7 +4,7 @@
 Summary:	Z39.50 protocol support library
 Name:		yaz
 Version:	2.1.54
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	BSD-like
 Group:		System/Libraries
 URL:		http://www.indexdata.dk/yaz/
@@ -80,7 +80,6 @@ sh ./buildconf.sh
 	--with-xml2 \
 	--with-xslt \
 	--with-exslt
-	    
 
 %make
 
@@ -144,5 +143,3 @@ perl -pi -e "s|^yaz_echo_source=.*|yaz_echo_source=yes|g" %{buildroot}%{_bindir}
 %{_datadir}/yaz/ill
 %{_mandir}/man1/yaz-asncomp.*
 %{_mandir}/man8/yaz-config.*
-
-
