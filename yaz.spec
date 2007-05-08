@@ -1,15 +1,15 @@
-%define major 2
+%define major 3
 %define libname	%mklibname yaz %{major}
 
 Summary:	Z39.50 protocol support library
 Name:		yaz
-Version:	2.1.54
-Release:	%mkrel 2
+Version:	3.0.2
+Release:	%mkrel 1
 License:	BSD-like
 Group:		System/Libraries
 URL:		http://www.indexdata.dk/yaz/
-Source0:	http://ftp.indexdata.dk/pub/yaz/%{name}-%{version}.tar.bz2
-Patch0:		%{name}-2.1.54-config.patch
+Source0:	http://ftp.indexdata.dk/pub/yaz/%{name}-%{version}.tar.gz
+Patch0:		yaz-config.diff
 Patch1:		%{name}-2.1.54-shared_pcap_libs.patch
 BuildRequires:	autoconf2.5
 BuildRequires:	docbook-dtd412-xml
