@@ -3,7 +3,7 @@
 
 Summary:	Z39.50 protocol support library
 Name:		yaz
-Version:	3.0.2
+Version:	3.0.6
 Release:	%mkrel 1
 License:	BSD-like
 Group:		System/Libraries
@@ -73,13 +73,13 @@ rm -f missing
 sh ./buildconf.sh
 
 %configure2_5x \
-	--enable-shared \
-	--enable-tcpd \
-	--with-openssl \
-	--with-pic \
-	--with-xml2 \
-	--with-xslt \
-	--with-exslt
+    --enable-shared \
+    --enable-tcpd \
+    --with-openssl \
+    --with-pic \
+    --with-xml2 \
+    --with-xslt \
+    --with-exslt
 
 %make
 
@@ -116,9 +116,10 @@ perl -pi -e "s|^yaz_echo_source=.*|yaz_echo_source=yes|g" %{buildroot}%{_bindir}
 %attr(755,root,root) %{_bindir}/ziffy
 %{_mandir}/man1/yaz-client*.*
 %{_mandir}/man1/yaz-iconv.1*
+%{_mandir}/man1/yaz-illclient.1*
 %{_mandir}/man1/yaz-marcdump.1*
-%{_mandir}/man1/zoomsh.*
 %{_mandir}/man1/ziffy.1*
+%{_mandir}/man1/zoomsh.*
 %{_mandir}/man8/yaz-ztest*.*
 # moved from lib pkg
 %{_mandir}/man7/*
