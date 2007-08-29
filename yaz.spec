@@ -51,7 +51,7 @@ Group:		Development/C
 Requires:	%{libname} = %{version}
 Provides:	%{name}-devel
 Provides:	lib%{name}-devel
-Conflicts:	%{mklibname yaz 2}-devel
+Conflicts:	%{mklibname %{name} 2}-devel
 
 %description -n %{libname}-devel
 Development libraries and includes for the libyaz package.
