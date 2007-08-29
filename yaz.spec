@@ -4,7 +4,7 @@
 Summary:	Z39.50 protocol support library
 Name:		yaz
 Version:	3.0.6
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	BSD-like
 Group:		System/Libraries
 URL:		http://www.indexdata.dk/yaz/
@@ -51,7 +51,7 @@ Group:		Development/C
 Requires:	%{libname} = %{version}
 Provides:	%{name}-devel
 Provides:	lib%{name}-devel
-Conflicts:	libyaz2-devel
+Conflicts:	%{mklibname yaz 2}-devel
 
 %description -n %{libname}-devel
 Development libraries and includes for the libyaz package.
