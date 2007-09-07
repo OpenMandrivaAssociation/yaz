@@ -1,16 +1,16 @@
 %define major 3
-%define libname	%mklibname yaz %{major}
+%define libname %mklibname yaz %{major}
+%define develname %mklibname yaz -d
 
 Summary:	Z39.50 protocol support library
 Name:		yaz
-Version:	3.0.6
-Release:	%mkrel 3
+Version:	3.0.10
+Release:	%mkrel 1
 License:	BSD-like
 Group:		System/Libraries
 URL:		http://www.indexdata.dk/yaz/
 Source0:	http://ftp.indexdata.dk/pub/yaz/%{name}-%{version}.tar.gz
 Patch0:		yaz-config.diff
-Patch1:		%{name}-2.1.54-shared_pcap_libs.patch
 BuildRequires:	autoconf2.5
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	docbook-style-dsssl
@@ -45,22 +45,22 @@ Requires:	%{name} = %{version}-%{release}
 YAZ is a library for the ANSI/NISO Z39.50 protocol for Information
 Retrieval.
 
-%package -n	%{libname}-devel
+%package -n	%{develname}
 Summary:	Z39.50 Library - development package
 Group:		Development/C
 Requires:	%{libname} = %{version}
 Provides:	%{name}-devel
 Provides:	lib%{name}-devel
-Conflicts:	%{mklibname %{name} 2}-devel
+Conflicts:	%{mklibname yaz 2 -d}
+Obsoletes:	%{mklibname yaz 3 -d}
 
-%description -n %{libname}-devel
+%description -n %{develname}
 Development libraries and includes for the libyaz package.
 
 %prep
 
 %setup -q
 %patch0 -p0
-%patch1 -p0
 
 # lib64 fix
 perl -pi -e "s|/lib\b|/%{_lib}|g" configure*
@@ -130,7 +130,7 @@ perl -pi -e "s|^yaz_echo_source=.*|yaz_echo_source=yes|g" %{buildroot}%{_bindir}
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/*.so.%{major}*
 
-%files -n %{libname}-devel
+%files -n %{develname}
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/yaz-config
 %multiarch %attr(755,root,root) %{multiarch_bindir}/yaz-config
