@@ -5,7 +5,7 @@
 Summary:	Z39.50 protocol support library
 Name:		yaz
 Version:	3.0.14
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	BSD-like
 Group:		System/Libraries
 URL:		http://www.indexdata.dk/yaz/
@@ -72,6 +72,10 @@ rm -f missing
 #libtoolize --copy --force; aclocal -I m4; autoconf; automake --add-missing
 
 sh ./buildconf.sh
+
+%if %mdkversion <= 200600
+export LIBS="$LIBS -lnsl"
+%endif
 
 %configure2_5x \
     --enable-shared \
