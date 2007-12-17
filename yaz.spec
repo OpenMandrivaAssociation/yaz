@@ -28,7 +28,6 @@ BuildRequires:	pkgconfig
 BuildRequires:	readline-devel
 BuildRequires:	tcp_wrappers-devel
 BuildRequires:	zlib-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 This package contains both a test-server and clients (normal &
