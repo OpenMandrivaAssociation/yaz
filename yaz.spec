@@ -5,11 +5,12 @@
 Summary:	Z39.50 protocol support library
 Name:		yaz
 Version:	3.0.18
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	BSD-like
 Group:		System/Libraries
 URL:		http://www.indexdata.dk/yaz/
 Source0:	http://ftp.indexdata.dk/pub/yaz/%{name}-%{version}.tar.gz
+Patch0:		yaz-3.0.18-config.patch
 BuildRequires:	docbook-style-dsssl
 BuildRequires:	docbook-style-xsl
 BuildRequires:	libpcap-devel
@@ -56,6 +57,7 @@ Development libraries and includes for the libyaz package.
 %prep
 
 %setup -q
+%patch0 -p1
 
 # lib64 fix
 perl -pi -e "s|/lib\b|/%{_lib}|g" configure*
