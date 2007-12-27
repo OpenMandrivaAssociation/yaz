@@ -10,23 +10,21 @@ License:	BSD-like
 Group:		System/Libraries
 URL:		http://www.indexdata.dk/yaz/
 Source0:	http://ftp.indexdata.dk/pub/yaz/%{name}-%{version}.tar.gz
-BuildRequires:	autoconf2.5
-BuildRequires:	docbook-dtd412-xml
 BuildRequires:	docbook-style-dsssl
-BuildRequires:	docbook-utils
-BuildRequires:	jade
-BuildRequires:	jadetex
-BuildRequires:	libgcrypt-devel
-BuildRequires:	libgpg-error-devel
+BuildRequires:	docbook-style-xsl
 BuildRequires:	libpcap-devel
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
 BuildRequires:	libxslt-devel
 BuildRequires:	openssl-devel
-BuildRequires:	pkgconfig
 BuildRequires:	readline-devel
+BuildRequires:	ncurses-devel
+BuildRequires:	termcap-devel
 BuildRequires:	tcp_wrappers-devel
-BuildRequires:	zlib-devel
+BuildRequires:	libicu-devel
+BuildRequires:	bison
+BuildRequires:	libpth-devel
+BuildRequires:	tcl
 
 %description
 This package contains both a test-server and clients (normal &
@@ -75,12 +73,14 @@ export LIBS="$LIBS -lnsl"
 %configure2_5x \
     --enable-shared \
     --enable-tcpd \
+    --enable-pth \
     --with-openssl \
-    --with-pic \
     --with-xml2 \
     --with-xslt \
-    --with-exslt
-
+    --with-exslt \
+    --with-icu \
+    --with-pcap
+    
 %make
 
 %check
@@ -116,6 +116,7 @@ perl -pi -e "s|^yaz_echo_source=.*|yaz_echo_source=yes|g" %{buildroot}%{_bindir}
 %attr(755,root,root) %{_bindir}/ziffy
 %{_mandir}/man1/yaz-client*.*
 %{_mandir}/man1/yaz-iconv.1*
+%{_mandir}/man1/yaz-icu.1*
 %{_mandir}/man1/yaz-illclient.1*
 %{_mandir}/man1/yaz-marcdump.1*
 %{_mandir}/man1/ziffy.1*
