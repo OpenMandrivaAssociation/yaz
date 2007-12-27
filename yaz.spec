@@ -10,7 +10,6 @@ License:	BSD-like
 Group:		System/Libraries
 URL:		http://www.indexdata.dk/yaz/
 Source0:	http://ftp.indexdata.dk/pub/yaz/%{name}-%{version}.tar.gz
-Patch0:		yaz-config.diff
 BuildRequires:	autoconf2.5
 BuildRequires:	docbook-dtd412-xml
 BuildRequires:	docbook-style-dsssl
@@ -33,18 +32,18 @@ BuildRequires:	zlib-devel
 This package contains both a test-server and clients (normal &
 ssl) for the ANSI/NISO Z39.50 protocol for Information Retrieval.
 
-%package -n	%{libname}
+%package -n %{libname}
 Summary:	Z39.50 Library
 Group:		System/Libraries
 Requires:	openssl
 Requires:	tcp_wrappers
 Requires:	%{name} = %{version}-%{release}
 
-%description -n	%{libname}
+%description -n %{libname}
 YAZ is a library for the ANSI/NISO Z39.50 protocol for Information
 Retrieval.
 
-%package -n	%{develname}
+%package -n %{develname}
 Summary:	Z39.50 Library - development package
 Group:		Development/C
 Requires:	%{libname} = %{version}
@@ -59,16 +58,13 @@ Development libraries and includes for the libyaz package.
 %prep
 
 %setup -q
-%patch0 -p0
 
 # lib64 fix
 perl -pi -e "s|/lib\b|/%{_lib}|g" configure*
 perl -pi -e "s|/usr/lib/|%{_libdir}/|g" configure*
 
 %build
-export WANT_AUTOCONF_2_5=1
 rm -f missing
-#libtoolize --copy --force; aclocal -I m4; autoconf; automake --add-missing
 
 sh ./buildconf.sh
 
