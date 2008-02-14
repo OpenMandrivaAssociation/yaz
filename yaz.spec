@@ -8,6 +8,7 @@ Version:	3.0.18
 Release:	%mkrel 2
 License:	BSD-like
 Group:		System/Libraries
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 URL:		http://www.indexdata.dk/yaz/
 Source0:	http://ftp.indexdata.dk/pub/yaz/%{name}-%{version}.tar.gz
 Patch0:		yaz-3.0.18-config.patch
