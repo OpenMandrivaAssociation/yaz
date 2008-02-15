@@ -96,6 +96,7 @@ make check
 # fix installed docs
 rm -rf installed-docs
 mv %{buildroot}/installed-docs .
+mv %{buildroot}%{_docdir}/yaz/* installed-docs/
 
 # fix yaz-config (weird stuff...)
 perl -pi -e "s|^yaz_echo_source=.*|yaz_echo_source=yes|g" %{buildroot}%{_bindir}/yaz-config
