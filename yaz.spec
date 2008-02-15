@@ -4,14 +4,13 @@
 
 Summary:	Z39.50 protocol support library
 Name:		yaz
-Version:	3.0.18
-Release:	%mkrel 2
+Version:	3.0.24
+Release:	%mkrel 1
 License:	BSD-like
 Group:		System/Libraries
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 URL:		http://www.indexdata.dk/yaz/
 Source0:	http://ftp.indexdata.dk/pub/yaz/%{name}-%{version}.tar.gz
-Patch0:		yaz-3.0.18-config.patch
+Patch0:		yaz-config.diff
 BuildRequires:	docbook-style-dsssl
 BuildRequires:	docbook-style-xsl
 BuildRequires:	libpcap-devel
@@ -27,23 +26,23 @@ BuildRequires:	libicu-devel
 BuildRequires:	bison
 BuildRequires:	libpth-devel
 BuildRequires:	tcl
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
-This package contains both a test-server and clients (normal &
-ssl) for the ANSI/NISO Z39.50 protocol for Information Retrieval.
+This package contains both a test-server and clients (normal & ssl) for the
+ANSI/NISO Z39.50 protocol for Information Retrieval.
 
-%package -n %{libname}
+%package -n	%{libname}
 Summary:	Z39.50 Library
 Group:		System/Libraries
 Requires:	openssl
 Requires:	tcp_wrappers
 Requires:	%{name} = %{version}-%{release}
 
-%description -n %{libname}
-YAZ is a library for the ANSI/NISO Z39.50 protocol for Information
-Retrieval.
+%description -n	%{libname}
+YAZ is a library for the ANSI/NISO Z39.50 protocol for Information Retrieval.
 
-%package -n %{develname}
+%package -n	%{develname}
 Summary:	Z39.50 Library - development package
 Group:		Development/C
 Requires:	%{libname} = %{version}
@@ -52,13 +51,13 @@ Provides:	lib%{name}-devel
 Conflicts:	%{mklibname yaz 2 -d}
 Obsoletes:	%{mklibname yaz 3 -d}
 
-%description -n %{develname}
+%description -n	%{develname}
 Development libraries and includes for the libyaz package.
 
 %prep
 
 %setup -q
-%patch0 -p1
+%patch0 -p0
 
 # lib64 fix
 perl -pi -e "s|/lib\b|/%{_lib}|g" configure*
@@ -92,12 +91,11 @@ make check
 %install
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
 
-%makeinstall_std
+%makeinstall_std docdir=/installed-docs
 
 # fix installed docs
 rm -rf installed-docs
-cp -rf %{buildroot}%{_docdir}/yaz installed-docs
-rm -rf %{buildroot}%{_docdir}/yaz
+mv %{buildroot}/installed-docs .
 
 # fix yaz-config (weird stuff...)
 perl -pi -e "s|^yaz_echo_source=.*|yaz_echo_source=yes|g" %{buildroot}%{_bindir}/yaz-config
@@ -116,13 +114,11 @@ perl -pi -e "s|^yaz_echo_source=.*|yaz_echo_source=yes|g" %{buildroot}%{_bindir}
 %doc README LICENSE TODO installed-docs/*.html installed-docs/*.png
 %attr(755,root,root) %{_bindir}/yaz-*
 %attr(755,root,root) %{_bindir}/zoomsh
-%attr(755,root,root) %{_bindir}/ziffy
 %{_mandir}/man1/yaz-client*.*
 %{_mandir}/man1/yaz-iconv.1*
 %{_mandir}/man1/yaz-icu.1*
 %{_mandir}/man1/yaz-illclient.1*
 %{_mandir}/man1/yaz-marcdump.1*
-%{_mandir}/man1/ziffy.1*
 %{_mandir}/man1/zoomsh.*
 %{_mandir}/man8/yaz-ztest*.*
 # moved from lib pkg
