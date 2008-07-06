@@ -4,7 +4,7 @@
 
 Summary:	Z39.50 protocol support library
 Name:		yaz
-Version:	3.0.26
+Version:	3.0.34
 Release:	%mkrel 1
 License:	BSD-like
 Group:		System/Libraries
@@ -32,7 +32,7 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 This package contains both a test-server and clients (normal & ssl) for the
 ANSI/NISO Z39.50 protocol for Information Retrieval.
 
-%package -n	%{libname}
+%package -n %{libname}
 Summary:	Z39.50 Library
 Group:		System/Libraries
 Requires:	openssl
@@ -42,7 +42,7 @@ Requires:	%{name} = %{version}-%{release}
 %description -n	%{libname}
 YAZ is a library for the ANSI/NISO Z39.50 protocol for Information Retrieval.
 
-%package -n	%{develname}
+%package -n %{develname}
 Summary:	Z39.50 Library - development package
 Group:		Development/C
 Requires:	%{libname} = %{version}
