@@ -116,7 +116,7 @@ perl -pi -e "s|^yaz_echo_source=.*|yaz_echo_source=yes|g" %{buildroot}%{_bindir}
 
 %files
 %defattr(644,root,root,755)
-%doc README LICENSE TODO installed-docs/*.html installed-docs/*.png
+%doc README LICENSE installed-docs/*.html installed-docs/*.png
 %attr(755,root,root) %{_bindir}/yaz-*
 %attr(755,root,root) %{_bindir}/zoomsh
 %{_mandir}/man1/yaz-client*.*
