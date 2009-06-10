@@ -4,8 +4,8 @@
 
 Summary:	Z39.50 protocol support library
 Name:		yaz
-Version:	3.0.41
-Release:	%mkrel 2
+Version:	3.0.46
+Release:	%mkrel 1
 License:	BSD-like
 Group:		System/Libraries
 URL:		http://www.indexdata.dk/yaz/
@@ -13,7 +13,6 @@ Source0:	http://ftp.indexdata.dk/pub/yaz/%{name}-%{version}.tar.gz
 Patch0:		yaz-config.diff
 BuildRequires:	docbook-style-dsssl
 BuildRequires:	docbook-style-xsl
-BuildRequires:	libpcap-devel
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
 BuildRequires:	libxslt-devel
@@ -24,7 +23,6 @@ BuildRequires:	termcap-devel
 BuildRequires:	tcp_wrappers-devel
 BuildRequires:	libicu-devel
 BuildRequires:	bison
-BuildRequires:	libpth-devel
 BuildRequires:	tcl
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
@@ -64,9 +62,8 @@ perl -pi -e "s|/lib\b|/%{_lib}|g" configure*
 perl -pi -e "s|/usr/lib/|%{_libdir}/|g" configure*
 
 %build
-rm -f missing
-
-sh ./buildconf.sh
+#rm -f missing
+#sh ./buildconf.sh
 
 %if %mdkversion <= 200600
 export LIBS="$LIBS -lnsl"
@@ -75,13 +72,11 @@ export LIBS="$LIBS -lnsl"
 %configure2_5x \
     --enable-shared \
     --enable-tcpd \
-    --enable-pth \
     --with-openssl \
     --with-xml2 \
     --with-xslt \
     --with-exslt \
-    --with-icu \
-    --with-pcap
+    --with-icu
     
 %make
 
