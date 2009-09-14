@@ -4,7 +4,7 @@
 
 Summary:	Z39.50 protocol support library
 Name:		yaz
-Version:	3.0.47
+Version:	3.0.48
 Release:	%mkrel 1
 License:	BSD-like
 Group:		System/Libraries
