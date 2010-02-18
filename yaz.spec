@@ -1,10 +1,10 @@
-%define major 3
+%define major 4
 %define libname %mklibname yaz %{major}
 %define develname %mklibname yaz -d
 
 Summary:	Z39.50 protocol support library
 Name:		yaz
-Version:	3.0.50
+Version:	4.0.1
 Release:	%mkrel 1
 License:	BSD-like
 Group:		System/Libraries
@@ -118,6 +118,7 @@ perl -pi -e "s|^yaz_echo_source=.*|yaz_echo_source=yes|g" %{buildroot}%{_bindir}
 %{_mandir}/man1/yaz-iconv.1*
 %{_mandir}/man1/yaz-icu.1*
 %{_mandir}/man1/yaz-illclient.1*
+%{_mandir}/man1/yaz-json-parse.1*
 %{_mandir}/man1/yaz-marcdump.1*
 %{_mandir}/man1/zoomsh.*
 %{_mandir}/man8/yaz-ztest*.*
@@ -144,3 +145,5 @@ perl -pi -e "s|^yaz_echo_source=.*|yaz_echo_source=yes|g" %{buildroot}%{_bindir}
 %{_datadir}/yaz/ill
 %{_mandir}/man1/yaz-asncomp.*
 %{_mandir}/man8/yaz-config.*
+
+
