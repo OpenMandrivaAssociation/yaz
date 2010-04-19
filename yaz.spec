@@ -5,7 +5,7 @@
 Summary:	Z39.50 protocol support library
 Name:		yaz
 Version:	4.0.1
-Release:	%mkrel 2
+Release:	%mkrel 3
 License:	BSD-like
 Group:		System/Libraries
 URL:		http://www.indexdata.dk/yaz/
@@ -62,13 +62,7 @@ perl -pi -e "s|/lib\b|/%{_lib}|g" configure*
 perl -pi -e "s|/usr/lib/|%{_libdir}/|g" configure*
 
 %build
-#rm -f missing
-#sh ./buildconf.sh
-
-%if %mdkversion <= 200600
-export LIBS="$LIBS -lnsl"
-%endif
-
+autoreconf -fi
 %configure2_5x \
     --enable-shared \
     --enable-tcpd \
