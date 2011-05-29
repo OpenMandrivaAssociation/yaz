@@ -4,13 +4,13 @@
 
 Summary:	Z39.50 protocol support library
 Name:		yaz
-Version:	4.0.1
-Release:	%mkrel 5
+Version:	4.0.12
+Release:	%mkrel 1
 License:	BSD-like
 Group:		System/Libraries
 URL:		http://www.indexdata.dk/yaz/
 Source0:	http://ftp.indexdata.dk/pub/yaz/%{name}-%{version}.tar.gz
-Patch0:		yaz-config.diff
+Source1:	yaz-config.in
 BuildRequires:	docbook-style-dsssl
 BuildRequires:	docbook-style-xsl
 BuildRequires:	libtool
@@ -55,7 +55,10 @@ Development libraries and includes for the libyaz package.
 %prep
 
 %setup -q
-%patch0 -p0
+
+# i'm sick an dtired of patching this stupid file over and over...
+rm -rf yaz-config.in
+cp %{SOURCE1} yaz-config.in
 
 # lib64 fix
 perl -pi -e "s|/lib\b|/%{_lib}|g" configure*
@@ -71,7 +74,7 @@ autoreconf -fi
     --with-xslt \
     --with-exslt \
     --with-icu
-    
+
 %make
 
 %check
@@ -86,9 +89,6 @@ make check
 rm -rf installed-docs
 mv %{buildroot}/installed-docs .
 mv %{buildroot}%{_docdir}/yaz/* installed-docs/
-
-# fix yaz-config (weird stuff...)
-perl -pi -e "s|^yaz_echo_source=.*|yaz_echo_source=yes|g" %{buildroot}%{_bindir}/yaz-config
 
 %multiarch_binaries %{buildroot}%{_bindir}/yaz-config
 
@@ -139,5 +139,3 @@ perl -pi -e "s|^yaz_echo_source=.*|yaz_echo_source=yes|g" %{buildroot}%{_bindir}
 %{_datadir}/yaz/ill
 %{_mandir}/man1/yaz-asncomp.*
 %{_mandir}/man8/yaz-config.*
-
-
