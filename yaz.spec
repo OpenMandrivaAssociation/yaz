@@ -4,26 +4,28 @@
 
 Summary:	Z39.50 protocol support library
 Name:		yaz
-Version:	4.0.12
+Version:	4.2.0
 Release:	%mkrel 1
 License:	BSD-like
 Group:		System/Libraries
 URL:		http://www.indexdata.dk/yaz/
 Source0:	http://ftp.indexdata.dk/pub/yaz/%{name}-%{version}.tar.gz
 Source1:	yaz-config.in
+Patch0:		yaz-4.2.0-external_libstemmer.diff
+BuildRequires:	bison
 BuildRequires:	docbook-style-dsssl
 BuildRequires:	docbook-style-xsl
+BuildRequires:	libicu-devel
+BuildRequires:	libstemmer-devel
 BuildRequires:	libtool
 BuildRequires:	libxml2-devel
 BuildRequires:	libxslt-devel
+BuildRequires:	ncurses-devel
 BuildRequires:	openssl-devel
 BuildRequires:	readline-devel
-BuildRequires:	ncurses-devel
-BuildRequires:	termcap-devel
-BuildRequires:	tcp_wrappers-devel
-BuildRequires:	libicu-devel
-BuildRequires:	bison
 BuildRequires:	tcl
+BuildRequires:	tcp_wrappers-devel
+BuildRequires:	termcap-devel
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
@@ -55,6 +57,10 @@ Development libraries and includes for the libyaz package.
 %prep
 
 %setup -q
+%patch0 -p0
+
+# nuke the bundled libstemmer_c just in case
+rm -rf libstemmer_c
 
 # i'm sick an dtired of patching this stupid file over and over...
 rm -rf yaz-config.in
@@ -127,7 +133,7 @@ mv %{buildroot}%{_docdir}/yaz/* installed-docs/
 %files -n %{develname}
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/yaz-config
-%multiarch %attr(755,root,root) %{multiarch_bindir}/yaz-config
+%attr(755,root,root) %{multiarch_bindir}/yaz-config
 %attr(755,root,root) %{_bindir}/yaz-asncomp
 %{_includedir}/yaz
 %{_libdir}/*.so
@@ -138,4 +144,4 @@ mv %{buildroot}%{_docdir}/yaz/* installed-docs/
 %{_datadir}/yaz/z39.50
 %{_datadir}/yaz/ill
 %{_mandir}/man1/yaz-asncomp.*
-%{_mandir}/man8/yaz-config.*
+%{_mandir}/man1/yaz-config.*
