@@ -5,7 +5,7 @@
 Summary:	Z39.50 protocol support library
 Name:		yaz
 Version:	4.2.0
-Release:	%mkrel 1
+Release:	%mkrel 2
 License:	BSD-like
 Group:		System/Libraries
 URL:		http://www.indexdata.dk/yaz/
