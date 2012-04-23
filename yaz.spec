@@ -4,8 +4,8 @@
 
 Summary:	Z39.50 protocol support library
 Name:		yaz
-Version:	4.2.0
-Release:	%mkrel 2
+Version:	4.2.30
+Release:	%mkrel 1
 License:	BSD-like
 Group:		System/Libraries
 URL:		http://www.indexdata.dk/yaz/
@@ -87,7 +87,6 @@ autoreconf -fi
 make check
 
 %install
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
 
 %makeinstall_std docdir=/installed-docs
 
@@ -97,17 +96,6 @@ mv %{buildroot}/installed-docs .
 mv %{buildroot}%{_docdir}/yaz/* installed-docs/
 
 %multiarch_binaries %{buildroot}%{_bindir}/yaz-config
-
-%if %mdkversion < 200900
-%post -n %{libname} -p /sbin/ldconfig
-%endif
-
-%if %mdkversion < 200900
-%postun -n %{libname} -p /sbin/ldconfig
-%endif
-
-%clean
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
 
 %files
 %defattr(644,root,root,755)
@@ -121,6 +109,7 @@ mv %{buildroot}%{_docdir}/yaz/* installed-docs/
 %{_mandir}/man1/yaz-json-parse.1*
 %{_mandir}/man1/yaz-marcdump.1*
 %{_mandir}/man1/zoomsh.*
+%{_mandir}/man1/yaz-url.1.*
 %{_mandir}/man8/yaz-ztest*.*
 # moved from lib pkg
 %{_mandir}/man7/*
@@ -132,13 +121,10 @@ mv %{buildroot}%{_docdir}/yaz/* installed-docs/
 
 %files -n %{develname}
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/yaz-config
 %attr(755,root,root) %{multiarch_bindir}/yaz-config
-%attr(755,root,root) %{_bindir}/yaz-asncomp
 %{_includedir}/yaz
 %{_libdir}/*.so
 %{_libdir}/*.a
-%{_libdir}/*.la
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/aclocal/yaz.m4
 %{_datadir}/yaz/z39.50
