@@ -131,3 +131,159 @@ mv %{buildroot}%{_docdir}/yaz/* installed-docs/
 %{_datadir}/yaz/ill
 %{_mandir}/man1/yaz-asncomp.*
 %{_mandir}/man1/yaz-config.*
+
+
+%changelog
+* Mon Apr 23 2012 Alexander Khrukin <akhrukin@mandriva.org> 4.2.30-1mdv2012.0
++ Revision: 792807
+- version update 4.2.30
+
+* Sun Jun 05 2011 Funda Wang <fwang@mandriva.org> 4.2.0-2
++ Revision: 682807
+- rebuild for new icu
+
+* Sun May 29 2011 Oden Eriksson <oeriksson@mandriva.com> 4.2.0-1
++ Revision: 681632
+- 4.2.0
+- fix the friggin multiarch changes
+- use the system libstemmer library
+- 4.0.12
+- provide our own simplified yaz-config.in file (S1) instead of patching the stupid file over and over again....
+
+* Mon Mar 14 2011 Funda Wang <fwang@mandriva.org> 4.0.1-5
++ Revision: 644579
+- rebuild for new icu
+
+* Wed Dec 08 2010 Oden Eriksson <oeriksson@mandriva.com> 4.0.1-4mdv2011.0
++ Revision: 615760
+- the mass rebuild of 2010.1 packages
+
+* Mon Apr 19 2010 Funda Wang <fwang@mandriva.org> 4.0.1-3mdv2010.1
++ Revision: 536634
+- rebuild
+
+* Sun Mar 21 2010 Funda Wang <fwang@mandriva.org> 4.0.1-2mdv2010.1
++ Revision: 526124
+- rebuild for new icu
+
+* Thu Feb 18 2010 Oden Eriksson <oeriksson@mandriva.com> 4.0.1-1mdv2010.1
++ Revision: 507482
+- 4.0.1
+
+* Mon Nov 09 2009 Frederik Himpe <fhimpe@mandriva.org> 3.0.50-1mdv2010.1
++ Revision: 463704
+- update to new version 3.0.50
+
+* Mon Sep 14 2009 Frederik Himpe <fhimpe@mandriva.org> 3.0.48-1mdv2010.0
++ Revision: 440780
+- update to new version 3.0.48
+
+* Mon Jul 13 2009 Frederik Himpe <fhimpe@mandriva.org> 3.0.47-1mdv2010.0
++ Revision: 395462
+- update to new version 3.0.47
+
+* Wed Jun 10 2009 Oden Eriksson <oeriksson@mandriva.com> 3.0.46-1mdv2010.0
++ Revision: 384871
+- 3.0.46
+- rediffed patches
+- nuke obsolete options
+
+* Tue Mar 03 2009 Guillaume Rousse <guillomovitch@mandriva.org> 3.0.41-2mdv2009.1
++ Revision: 347885
+- rebuild for latest readline
+
+* Mon Feb 02 2009 Oden Eriksson <oeriksson@mandriva.com> 3.0.41-1mdv2009.1
++ Revision: 336358
+- fix build (duh!)
+- 3.0.41
+- rediffed patches
+
+* Fri Dec 05 2008 Adam Williamson <awilliamson@mandriva.org> 3.0.36-1mdv2009.1
++ Revision: 310408
+- rebuild with new tcl
+- new release 3.0.36
+
+* Thu Jul 17 2008 Oden Eriksson <oeriksson@mandriva.com> 3.0.34-1mdv2009.0
++ Revision: 237499
+- rediffed P0
+
+  + Tomasz Pawel Gajc <tpg@mandriva.org>
+    - update to new version 3.0.34
+
+  + Pixel <pixel@mandriva.com>
+    - do not call ldconfig in %%post/%%postun, it is now handled by filetriggers
+
+* Fri May 16 2008 Oden Eriksson <oeriksson@mandriva.com> 3.0.26-1mdv2009.0
++ Revision: 208164
+- 3.0.26
+
+* Fri Feb 15 2008 Oden Eriksson <oeriksson@mandriva.com> 3.0.24-1mdv2008.1
++ Revision: 168741
+- second try (bork bork bork!)
+- 3.0.24
+- rediffed P0
+- make that strange doc install work
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - fix no-buildroot-tag
+
+* Thu Dec 27 2007 Tomasz Pawel Gajc <tpg@mandriva.org> 3.0.18-2mdv2008.1
++ Revision: 138524
+- reintroduce patch 0
+
+* Thu Dec 27 2007 Tomasz Pawel Gajc <tpg@mandriva.org> 3.0.18-1mdv2008.1
++ Revision: 138494
+- add bunch of missing buildrequires, and remove not needed ones
+- fix file list
+- drop patch 0
+- new version
+
+  + Thierry Vignaud <tv@mandriva.org>
+    - kill re-definition of %%buildroot on Pixel's request
+
+* Tue Nov 13 2007 Oden Eriksson <oeriksson@mandriva.com> 3.0.14-2mdv2008.1
++ Revision: 108417
+- make it build on cs4
+
+* Tue Oct 23 2007 Tomasz Pawel Gajc <tpg@mandriva.org> 3.0.14-1mdv2008.1
++ Revision: 101377
+- new version
+
+* Mon Oct 01 2007 Oden Eriksson <oeriksson@mandriva.com> 3.0.10-2mdv2008.0
++ Revision: 94147
+- rebuilt due to missing packages
+
+* Fri Sep 07 2007 Oden Eriksson <oeriksson@mandriva.com> 3.0.10-1mdv2008.0
++ Revision: 81705
+- 3.0.10
+- drop obolete patches
+- new devel naming
+
+* Wed Aug 29 2007 Pixel <pixel@mandriva.com> 3.0.6-3mdv2008.0
++ Revision: 74638
+- better conflict on older lib
+
+* Wed Aug 29 2007 Pixel <pixel@mandriva.com> 3.0.6-2mdv2008.0
++ Revision: 74631
+- add explicit conflict from libyaz3-devel on libyaz2-devel
+
+* Thu Jun 07 2007 Oden Eriksson <oeriksson@mandriva.com> 3.0.6-1mdv2008.0
++ Revision: 36505
+- 3.0.6
+
+* Tue May 08 2007 Oden Eriksson <oeriksson@mandriva.com> 3.0.2-1mdv2008.0
++ Revision: 25052
+- 3.0.2
+- rediffed P0
+- new major (3)
+
+* Sat Apr 21 2007 Tomasz Pawel Gajc <tpg@mandriva.org> 2.1.54-2mdv2008.0
++ Revision: 16550
+- regenerate P0 one more time
+
+* Sat Apr 21 2007 Tomasz Pawel Gajc <tpg@mandriva.org> 2.1.54-1mdv2008.0
++ Revision: 16497
+- new version
+- regenerate P0 and P1
+- own missing files
+
