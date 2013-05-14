@@ -5,7 +5,7 @@
 Summary:	Z39.50 protocol support library
 Name:		yaz
 Version:	4.2.30
-Release:	%mkrel 1
+Release:	2
 License:	BSD-like
 Group:		System/Libraries
 URL:		http://www.indexdata.dk/yaz/
@@ -25,8 +25,7 @@ BuildRequires:	openssl-devel
 BuildRequires:	readline-devel
 BuildRequires:	tcl
 BuildRequires:	tcp_wrappers-devel
-BuildRequires:	termcap-devel
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+# BuildRequires:	termcap-devel
 
 %description
 This package contains both a test-server and clients (normal & ssl) for the
