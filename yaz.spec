@@ -15,11 +15,11 @@ Patch0:		yaz-4.2.0-external_libstemmer.diff
 BuildRequires:	bison
 BuildRequires:	docbook-style-dsssl
 BuildRequires:	docbook-style-xsl
-BuildRequires:	libicu-devel
+BuildRequires:	pkgconfig(icu-i18n)
 BuildRequires:	libstemmer-devel
 BuildRequires:	libtool
-BuildRequires:	libxml2-devel
-BuildRequires:	libxslt-devel
+BuildRequires:	pkgconfig(libxml-2.0)
+BuildRequires:	pkgconfig(libxslt)
 BuildRequires:	ncurses-devel
 BuildRequires:	openssl-devel
 BuildRequires:	readline-devel
