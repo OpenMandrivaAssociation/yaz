@@ -5,7 +5,7 @@
 Summary:	Z39.50 protocol support library
 Name:		yaz
 Version:	4.2.30
-Release:	5
+Release:	6
 License:	BSD-like
 Group:		System/Libraries
 URL:		http://www.indexdata.dk/yaz/
@@ -123,7 +123,6 @@ mv %{buildroot}%{_docdir}/yaz/* installed-docs/
 %attr(755,root,root) %{multiarch_bindir}/yaz-config
 %{_includedir}/yaz
 %{_libdir}/*.so
-%{_libdir}/*.a
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/aclocal/yaz.m4
 %{_datadir}/yaz/z39.50
