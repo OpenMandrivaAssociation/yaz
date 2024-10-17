@@ -8,7 +8,7 @@ Version:	4.2.30
 Release:	6
 License:	BSD-like
 Group:		System/Libraries
-URL:		http://www.indexdata.dk/yaz/
+URL:		https://www.indexdata.dk/yaz/
 Source0:	http://ftp.indexdata.dk/pub/yaz/%{name}-%{version}.tar.gz
 Source1:	yaz-config.in
 Patch0:		yaz-4.2.0-external_libstemmer.diff
