@@ -11,6 +11,11 @@ Group:		System/Libraries
 URL:		https://www.indexdata.dk/yaz/
 Source0:	http://ftp.indexdata.dk/pub/yaz/%{name}-%{version}.tar.gz
 
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	bison
 BuildRequires:	docbook-style-dsssl
 BuildRequires:	docbook-style-xsl
