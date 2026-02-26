@@ -4,12 +4,23 @@
 
 Summary:	Z39.50 protocol support library
 Name:		yaz
-Version:	5.35.1
-Release:	3
+Version:	5.37.0
+Release:	1
 License:	BSD-like
 Group:		System/Libraries
 URL:		https://www.indexdata.dk/yaz/
 Source0:	http://ftp.indexdata.dk/pub/yaz/%{name}-%{version}.tar.gz
+
+BuildSystem:      autotools
+
+BuildOption:          --enable-shared
+BuildOption:          --enable-tcpd
+BuildOption:          --with-openssl
+BuildOption:          --with-xml2
+BuildOption:          --with-xslt
+BuildOption:          --with-exslt
+BuildOption:          --with-icu
+BuildOption(install): docdir=/installed-docs
 
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -17,6 +28,7 @@ BuildRequires:	libtool-base
 BuildRequires:	slibtool
 BuildRequires:	make
 BuildRequires:	bison
+BuildRequires:    xsltproc
 BuildRequires:	docbook-style-dsssl
 BuildRequires:	docbook-style-xsl
 BuildRequires:	pkgconfig 
@@ -27,8 +39,8 @@ BuildRequires:	pkgconfig(libxslt)
 BuildRequires:	pkgconfig(openssl)
 BuildRequires:	readline-devel
 BuildRequires:	tcp_wrappers-devel
-BuildRequires:  pkgconfig(gnutls)
-BuildRequires:  pkgconfig(hiredis)
+BuildRequires:    pkgconfig(gnutls)
+BuildRequires:    pkgconfig(hiredis)
 
 %description
 This package contains both a test-server and clients (normal & ssl) for the
@@ -56,26 +68,7 @@ Obsoletes:	%{mklibname yaz 3 -d} <= %version
 %description -n	%{develname}
 Development libraries and includes for the libyaz package.
 
-%prep
-%autosetup -p1
-
-%build
-autoreconf -fi
-%configure \
-    --enable-shared \
-    --enable-tcpd \
-    --with-openssl \
-    --with-xml2 \
-    --with-xslt \
-    --with-exslt \
-    --with-icu
-
-%make_build
-
-%install
-
-%make_install docdir=/installed-docs
-
+%install -a
 # fix installed docs
 rm -rf installed-docs
 mv %{buildroot}/installed-docs .
